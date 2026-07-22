@@ -259,8 +259,16 @@ main { margin: 15px 12px; margin-bottom: 75px; min-width: 259px; }
   gap: 15px;
 }
 .service-item::before { content: ""; position: absolute; inset: 1px; background: var(--bg-gradient-jet); border-radius: inherit; z-index: -1; }
-.service-icon-box { flex-shrink: 0; margin-top: 3px; }
-.service-icon-box img { display: block; filter: brightness(0) invert(65%) sepia(80%) saturate(900%) hue-rotate(5deg); }
+.service-icon-box {
+  flex-shrink: 0;
+  margin-top: 3px;
+  width: 40px;
+  height: 40px;
+  background: var(--accent-blue);
+  -webkit-mask: var(--icon) center / contain no-repeat;
+  mask: var(--icon) center / contain no-repeat;
+}
+.service-icon-box img { display: none; }
 .service-content-box { text-align: left; }
 .service-item-title { margin-bottom: 7px; }
 .service-item-text { color: var(--light-gray); font-size: var(--fs-6); font-weight: var(--fw-300); line-height: 1.6; }

@@ -596,6 +596,109 @@ main {
 
 
 /*-----------------------------------*\
+  #NEWS
+\*-----------------------------------*/
+
+.news-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-bottom: 10px;
+}
+
+.news-item {
+  position: relative;
+  background: var(--border-gradient-onyx);
+  border-radius: 12px;
+  padding: 14px 18px;
+  box-shadow: var(--shadow-2);
+  z-index: 1;
+}
+
+.news-item::before {
+  content: "";
+  position: absolute;
+  inset: 1px;
+  background: var(--bg-gradient-jet);
+  border-radius: inherit;
+  z-index: -1;
+}
+
+.news-date {
+  color: var(--accent-blue-muted);
+  font-size: var(--fs-7);
+  font-weight: var(--fw-500);
+  white-space: nowrap;
+  margin-bottom: 4px;
+}
+
+.news-text {
+  color: var(--light-gray);
+  font-size: var(--fs-6);
+  font-weight: var(--fw-300);
+  line-height: 1.6;
+}
+
+/* the reset makes <a> block-level; keep links inline in news text */
+.news-text a {
+  position: relative;
+  z-index: 3; /* stays clickable above a card-wide .news-link */
+  display: inline;
+  color: var(--accent-blue);
+}
+
+.news-text a:hover { text-decoration: underline; }
+
+/* optional: makes the whole card clickable */
+.news-link {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  z-index: 2;
+}
+
+.news-link ion-icon {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 16px;
+  color: var(--accent-blue);
+  opacity: 0.6;
+  transition: var(--transition-1);
+}
+
+.news-link:focus-visible { outline: 2px solid var(--accent-blue); }
+
+.news-item:has(.news-link) {
+  padding-right: 44px; /* room for the arrow */
+  transition: var(--transition-1);
+}
+
+.news-item:has(.news-link):hover { background: var(--bg-gradient-blue-1); }
+
+.news-item:has(.news-link):hover::before { background: var(--bg-gradient-blue-2); }
+
+.news-item:hover .news-link ion-icon {
+  opacity: 1;
+  transform: translateX(3px);
+}
+
+@media (min-width: 580px) {
+
+  /* date in a left column, text beside it */
+  .news-item {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 16px;
+    align-items: baseline;
+  }
+
+  .news-date { margin-bottom: 0; }
+
+}
+
+
+/*-----------------------------------*\
   #RESUME / CV
 \*-----------------------------------*/
 
